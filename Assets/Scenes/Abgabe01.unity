@@ -442,9 +442,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 4334857200829406698, guid: 887fb0f17cff54ff684d6c15ce639429, type: 3}
-  amount: 15
-  rotation_speed: 20
-  board_size: 40
+  board: {fileID: 45420787}
+  amount: 3
+  rotation_speed: 200
 --- !u!4 &1080504843
 Transform:
   m_ObjectHideFlags: 0
