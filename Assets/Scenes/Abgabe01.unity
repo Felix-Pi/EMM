@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 45420785}
   - component: {fileID: 45420784}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Board
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -442,7 +442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c1341274c0494be0931d263ece5a171, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myPrefab: {fileID: 7270734181408134031, guid: daea9fc97766a46199e666d8fcb7f64c, type: 3}
+  myPrefab: {fileID: 4334857200829406698, guid: 887fb0f17cff54ff684d6c15ce639429, type: 3}
   amount: 3
   speed: 20
 --- !u!4 &1080504843
