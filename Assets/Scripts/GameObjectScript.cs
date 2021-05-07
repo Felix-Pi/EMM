@@ -12,6 +12,7 @@ public class GameObjectScript : MonoBehaviour
     public float rotation_speed = 20.0f;
     public LinkedList<Transform> prefabs = new LinkedList<Transform>();
 
+    
     private float board_size;
     private int board_offset = 2;
 

@@ -8,23 +8,39 @@ public class Player : MonoBehaviour
     public float speed = 10f;
 
     private Vector3 target_direction = new Vector3(0, 0, 0);
-    private float angle;
+    public float angle;
 
     private int game_object_collision_counter = 0;
 
+    private float moving_speed;
+
+
+    private void Start()
+    {
+        moving_speed = speed * Time.deltaTime;
+    }
+
+    public void move(float z)
+    {
+        transform.Translate(0, 0, z * moving_speed);
+    }
+
+    public void rotate(float angle)
+    {
+        float _angle = angle * moving_speed * 0.25f;
+        target_direction = new Vector3(Mathf.Sin(_angle), 0, Mathf.Cos(_angle));
+        transform.rotation = Quaternion.Slerp(Quaternion.identity, Quaternion.LookRotation(target_direction), 1);
+    }
+
     private void Update()
     {
-        float moving_speed = speed * Time.deltaTime;
-
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-        angle += moveHorizontal * moving_speed * 0.25f;
+        angle += moveHorizontal;
 
-        target_direction = new Vector3(Mathf.Sin(angle), 0, Mathf.Cos(angle));
-        transform.rotation = Quaternion.Slerp(Quaternion.identity, Quaternion.LookRotation(target_direction), 1);
-
-        transform.Translate(0, 0, moveVertical * moving_speed);
+        rotate(angle);
+        move(moveVertical);
     }
 
     void OnTriggerEnter(Collider other)
