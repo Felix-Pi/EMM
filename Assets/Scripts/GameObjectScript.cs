@@ -12,26 +12,34 @@ public class GameObjectScript : MonoBehaviour
     public float rotation_speed = 20.0f;
     public LinkedList<Transform> prefabs = new LinkedList<Transform>();
 
+
     private float board_size;
     private int board_offset = 2;
 
     // Start is called before the first frame update
+
+
     void Start()
     {
-        board_size = board.localScale.x;
         Vector3 spawn_vector;
 
         for (int i = 0; i < amount; i++)
         {
-            float board_border_lower = -(board_size / 2) + board_offset; //todo rename
-            float board_border_upper = (board_size / 2) - board_offset; //todo rename
+            float offsetX = board.localScale.x / 2f;
+            float offsetZ = board.localScale.z / 2f;
 
-            float x = UnityEngine.Random.Range(board_border_lower, board_border_upper);
-            float z = UnityEngine.Random.Range(board_border_lower, board_border_upper);
+            float x = UnityEngine.Random.Range(board.position.x + offsetX - 1,
+                board.position.x - offsetX + 1);
+            float z = UnityEngine.Random.Range(board.position.z + offsetZ - 1,
+                board.position.z - offsetZ + 1);
 
-            spawn_vector = new Vector3(x, 1f, z);
+            print(board.localScale);
+            print(board.position.z);
+            print(board.localScale.x);
+            spawn_vector = new Vector3(x, board.position.y + board.localScale.y, z);
 
             Transform spawned = Instantiate(enemy, spawn_vector, Quaternion.identity);
+
 
             prefabs.AddLast(spawned);
         }
@@ -44,6 +52,8 @@ public class GameObjectScript : MonoBehaviour
 
         foreach (var prefab in prefabs)
         {
+            prefab.transform.position =
+                new Vector3(prefab.position.x, board.position.y + board.localScale.y, prefab.position.z);
             prefab.transform.rotation *= Quaternion.Euler(0, moving_rotation_speed + 1, 0);
         }
     }
