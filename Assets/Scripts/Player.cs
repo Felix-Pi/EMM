@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 
     private Vector3 target_direction = new Vector3(0, 0, 0);
     public float angle;
+    public float movement;
 
     private int game_object_collision_counter = 0;
 
@@ -20,12 +21,12 @@ public class Player : MonoBehaviour
         moving_speed = speed * Time.deltaTime;
     }
 
-    public void move(float z)
+    public void Move(float z)
     {
         transform.Translate(0, 0, z * moving_speed);
     }
 
-    public void rotate(float angle)
+    public void Rotate(float angle)
     {
         float _angle = angle * moving_speed * 0.25f;
         target_direction = new Vector3(Mathf.Sin(_angle), 0, Mathf.Cos(_angle));
@@ -34,13 +35,12 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        movement = 0;
+        movement = Input.GetAxis("Vertical");
+        angle += Input.GetAxis("Horizontal");
 
-        angle += moveHorizontal;
-
-        rotate(angle);
-        move(moveVertical);
+        Rotate(angle);
+        Move(movement);
     }
 
     void OnTriggerEnter(Collider other)
