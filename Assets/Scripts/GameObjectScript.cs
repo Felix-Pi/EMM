@@ -25,20 +25,21 @@ public class GameObjectScript : MonoBehaviour
 
         for (int i = 0; i < amount; i++)
         {
+            
+            
             float offsetX = board.localScale.x / 2f;
             float offsetZ = board.localScale.z / 2f;
 
-            float x = UnityEngine.Random.Range(board.position.x + offsetX - 1,
-                board.position.x - offsetX + 1);
-            float z = UnityEngine.Random.Range(board.position.z + offsetZ - 1,
-                board.position.z - offsetZ + 1);
-
-            print(board.localScale);
-            print(board.position.z);
-            print(board.localScale.x);
-            spawn_vector = new Vector3(x, board.position.y + board.localScale.y, z);
+            float x = UnityEngine.Random.Range(board.localPosition.x + offsetX - 1,
+                board.localPosition.x - offsetX + 1);
+            float z = UnityEngine.Random.Range(board.localPosition.z + offsetZ - 1,
+                board.localPosition.z - offsetZ + 1);
+            
+            spawn_vector = new Vector3(x, board.localPosition.y + board.localScale.y, z);
+            
 
             Transform spawned = Instantiate(enemy, spawn_vector, Quaternion.identity);
+            spawned.transform.parent = board.transform;
 
 
             prefabs.AddLast(spawned);
