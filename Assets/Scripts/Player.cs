@@ -14,11 +14,19 @@ public class Player : MonoBehaviour
     private int game_object_collision_counter = 0;
 
     private float moving_speed;
+    private Transform parent;
 
 
     private void Start()
     {
         moving_speed = speed * Time.deltaTime;
+        parent = transform.parent;
+        
+        Vector3 parentPos = parent.localPosition;
+        Vector3 parentScale = parent.localScale;
+
+
+        transform.position = new Vector3(parentPos.x, parentPos.y + parentScale.y, parentPos.z);
     }
 
     public void Move(float z)
