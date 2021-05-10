@@ -14,7 +14,6 @@ public class Player : MonoBehaviour
     private int game_object_collision_counter = 0;
 
     private float moving_speed;
-
     private Transform parent;
 
 
@@ -22,6 +21,7 @@ public class Player : MonoBehaviour
     {
         moving_speed = speed * Time.deltaTime;
         parent = transform.parent;
+        
         Vector3 parentPos = parent.localPosition;
         Vector3 parentScale = parent.localScale;
 
