@@ -39,10 +39,14 @@ public class MenuManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("escape"))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Q))
         {
             //pause game
-            Time.timeScale = 0;
+
+            if (!menuState)
+            {
+                Time.timeScale = 0;
+            }
 
             ReturnToScene();
         }
