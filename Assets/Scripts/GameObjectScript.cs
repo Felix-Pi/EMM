@@ -9,7 +9,7 @@ public class GameObjectScript : MonoBehaviour
     public Transform prefab;
 
 
-    void Update()
+    void FixedUpdate()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Collectable");
 
