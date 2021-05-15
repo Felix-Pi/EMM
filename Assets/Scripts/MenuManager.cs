@@ -17,17 +17,32 @@ public class MenuManager : MonoBehaviour
     {
         Debug.Log("RestartScene");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
+        menuState = false;
+        Time.timeScale = 1;
     }
 
     public void ReturnToScene()
     {
         Debug.Log("ReturnToScene");
-        menuState = !menuState;
+        
+        menuState = false;
         menu.SetActive(menuState);
 
         //continue game
         Time.timeScale = 1;
     }
+
+    public void OpenMenu()
+    {
+        Debug.Log("OpenMenu");
+
+        menuState = true;
+        menu.SetActive(menuState);
+
+        Time.timeScale = 0;
+    }
+
 
     void Start()
     {
@@ -41,14 +56,14 @@ public class MenuManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Q))
         {
-            //pause game
-
-            if (!menuState)
+            if (!menuState) //menu state is false
             {
-                Time.timeScale = 0;
+                OpenMenu();
             }
-
-            ReturnToScene();
+            else
+            {
+                ReturnToScene();
+            }
         }
     }
 }

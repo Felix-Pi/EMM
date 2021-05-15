@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
         transform.rotation = Quaternion.Slerp(Quaternion.identity, Quaternion.LookRotation(target_direction), 1);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         movement = 0;
         movement = Input.GetAxis("Vertical");
