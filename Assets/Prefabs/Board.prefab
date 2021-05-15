@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 1432210322985835169}
   - component: {fileID: 1432210322985835168}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Enemy
   m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -398,10 +398,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c1341274c0494be0931d263ece5a171, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 4334857200829406698, guid: 887fb0f17cff54ff684d6c15ce639429, type: 3}
-  board: {fileID: 1432210321957058654}
-  amount: 3
   rotation_speed: 200
+  prefab: {fileID: 4334857200829406698, guid: 887fb0f17cff54ff684d6c15ce639429, type: 3}
 --- !u!65 &1432210322985835169
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -593,7 +591,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3f75a721cfaa14689a60f6ddc39bf3c7, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -792,6 +790,11 @@ PrefabInstance:
       propertyPath: speed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7526508599081634539, guid: 915d341aad38843d7b807cb8e53bc58c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0756b0a05044840b4b5d8fe9c3e7ee72, type: 2}
     - target: {fileID: 7526508599081634542, guid: 915d341aad38843d7b807cb8e53bc58c,
         type: 3}
       propertyPath: m_Name
